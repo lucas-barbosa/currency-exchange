@@ -1,0 +1,8 @@
+{
+  "name": "currency-exchange",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:lucas-barbosa/currency-exchange.git",
+  "author": "Lucas Barbosa <barbosa.lucash@gmail.com>",
+  "license": "MIT"
+}
