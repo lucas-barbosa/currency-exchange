@@ -1,21 +1,13 @@
-import axios from "axios";
-import { ExchangeService } from "../../../core/interfaces/exchange-service";
-import { timeout } from "../../utils/timeout";
+import axios from 'axios';
+import { ExchangeService } from '../../../core/interfaces/exchange-service';
+import { ExchangeEventData, ExchangeWebhook } from '../../../core/interfaces/exchange-webhook';
+import { timeout } from '../../utils/timeout';
 
 type ExchangeResponseData = {
   mood: string;
   cid: string;
   message: string;
 };
-
-type ExchangeEventData = {
-  cid: string;
-  f: number;
-  t: string;
-  v: number;
-};
-
-type ExchangeWebhook = (callbackUrl: string, cid: string) => Promise<ExchangeEventData>;
 
 export class ExchangeC implements ExchangeService {
   constructor(private callbackUrl: string, private webhookSocket: ExchangeWebhook) {}
