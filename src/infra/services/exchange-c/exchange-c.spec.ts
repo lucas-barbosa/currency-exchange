@@ -6,7 +6,7 @@ describe('Exchange C - service', () => {
   let exchangeService: ExchangeC;
   const callbackUrl = 'http://127.0.0.1:3000';
   
-  const webhook = jest.fn((callbackUrl: string, cid: string) => Promise.resolve({
+  const webhook = jest.fn((cid: string) => Promise.resolve({
     cid,
     f: 100,
     t: 'currency',
@@ -46,7 +46,7 @@ describe('Exchange C - service', () => {
   });
 
   it('should throw an error if webhook takes more than 5 seconds', async () => {
-    webhook.mockImplementationOnce((callbackUrl: string, cid: string) => 
+    webhook.mockImplementationOnce((cid: string) => 
       new Promise((resolve, reject) => {
         setTimeout(() => {
           resolve({
