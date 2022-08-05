@@ -23,6 +23,8 @@ export class ExchangeB implements ExchangeService {
       }
     });
     
-    return parseFloat(data.cotacao.valor);
+    const value = parseFloat(data.cotacao.valor) / data.cotacao.fator;
+
+    return value;
   };  
 }
