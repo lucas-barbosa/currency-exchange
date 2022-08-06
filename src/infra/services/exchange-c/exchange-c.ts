@@ -25,7 +25,7 @@ export class ExchangeC implements ExchangeService {
     });
 
     const response = await Promise.race([
-      this.webhookSocket(this.callbackUrl, data.cid),
+      this.webhookSocket(data.cid),
       timeout<ExchangeEventData>(5000)
     ]);
     
