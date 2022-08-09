@@ -11,3 +11,8 @@ export const badRequest = (err: Error): HttpResponse => ({
   },
   statusCode: 400
 });
+
+export const noContent = () => ({
+  body: {},
+  statusCode: 200
+});
