@@ -42,7 +42,7 @@ describe('Exchange C - service', () => {
     await exchangeService.getValue('EUR');
 
     expect(webhook).toBeCalledTimes(1);
-    expect(webhook).toBeCalledWith(callbackUrl, expect.any(String));
+    expect(webhook).toBeCalledWith(expect.any(String));
   });
 
   it('should throw an error if webhook takes more than 5 seconds', async () => {
