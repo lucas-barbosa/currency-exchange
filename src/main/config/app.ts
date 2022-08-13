@@ -1,3 +1,4 @@
+import './env';
 import express from 'express';
 import setupRoutes from './setup-routes';
 

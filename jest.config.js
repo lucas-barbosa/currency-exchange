@@ -8,5 +8,6 @@ module.exports = {
   roots: [
     "<rootDir>/src"
   ],
+  setupFiles: ["dotenv/config"],
   testEnvironment: 'node',
 };

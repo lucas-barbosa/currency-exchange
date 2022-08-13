@@ -15,7 +15,7 @@ export class ExchangeB implements ExchangeService {
       throw new Error('Currency can not be empty!');
     }
     
-    const url = `http://localhost:8080/servico-b/cotacao`;
+    const url = process.env.EXCHANGE_B_URL;
 
     const { data } = await axios.get<ExchangeResponseData>(url, {
       params: {

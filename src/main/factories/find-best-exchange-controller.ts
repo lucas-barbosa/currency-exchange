@@ -6,7 +6,7 @@ import { makeExchangeCService } from './exchange-c-service';
 export const makeFindBestExchangeController = () => {
   const exchangeA = makeExchangeAService();
   const exchangeB = makeExchangeBService();
-  const exchangeC = makeExchangeCService();
+  const exchangeC = makeExchangeCService('cotacoes');
 
   return new FindBestExchangeController([
     exchangeA,
