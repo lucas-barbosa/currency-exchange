@@ -48,14 +48,15 @@ describe('Find Best Exchange - usecase', () => {
     });
   });
 
-  it('should receive a currency in string and return a number value', async () => {
+  it('should receive a currency in string and return a object containing price value', async () => {
     const result = await findBestExchange.execute('BRL');
-    expect(result).toEqual(expect.any(Number));
+    expect(result.price).toEqual(expect.any(Number));
   });
 
-  it('should return the lowest value from services', async () => {
-    const bestPrice = await findBestExchange.execute('BRL');
-    expect(bestPrice).toBe(8);
+  it('should return the lowest value as price from services', async () => {
+    const response = await findBestExchange.execute('BRL');
+    expect(response.price).toBe(8);
+    expect(response.currency).toBe('BRL');
   });
 
   it('should throw an error if no value was found', async () => {

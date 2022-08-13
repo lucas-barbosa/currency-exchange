@@ -1,5 +1,11 @@
 import { ExchangeService } from '../../interfaces/exchange-service';
 
+type BestExchange = {
+  price: number;
+  currency: string;
+  comparative: string;
+}
+
 export class FindBestExchange {
   private services: ExchangeService[];
 
@@ -11,7 +17,7 @@ export class FindBestExchange {
     this.services = services;
   }
 
-  async execute(currency: string): Promise<number> {
+  async execute(currency: string): Promise<BestExchange> {
     const result = await Promise.allSettled(this.services.map(service => service.getValue(currency)));
 
     const availableValues = result
@@ -24,6 +30,10 @@ export class FindBestExchange {
 
     const bestPrice = Math.min(...availableValues);
 
-    return bestPrice;
+    return {
+      currency,
+      price: bestPrice,
+      comparative: 'BRL',
+    };
   }
 }

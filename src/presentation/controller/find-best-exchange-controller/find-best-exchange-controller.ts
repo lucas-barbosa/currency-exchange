@@ -17,7 +17,12 @@ export class FindBestExchangeController implements Controller<FindBestExchangeRe
   async handle({ currency }: FindBestExchangeRequestData) {
     try {
       const response = await this.findBestExchange.execute(currency);
-      return ok(response);
+      
+      return ok({
+        cotacao: response.price,
+        moeda: response.currency,
+        comparativo: response.comparative
+      });
     } catch (err) {
       return badRequest(err as Error);
     }
