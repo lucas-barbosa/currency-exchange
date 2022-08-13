@@ -11,7 +11,7 @@ type ExchangeResponseData = {
 
 export class ExchangeC implements ExchangeService {
   constructor(private callbackUrl: string, private webhookSocket: ExchangeWebhook) {}
-  
+
   async getValue(currency: string) {
     if (!currency) {
       throw new Error('Currency can not be empty!');
@@ -21,12 +21,12 @@ export class ExchangeC implements ExchangeService {
 
     const { data } = await axios.post<ExchangeResponseData>(url, {
       tipo: currency,
-      callback: this.callbackUrl
+      callback: this.callbackUrl,
     });
 
     const response = await Promise.race([
       this.webhookSocket(data.cid),
-      timeout<ExchangeEventData>(5000)
+      timeout<ExchangeEventData>(5000),
     ]);
 
     const value = response.v / response.f;

@@ -8,4 +8,4 @@ const exchangeRoutes = Router();
 exchangeRoutes.get('/', routeAdapter(makeFindBestExchangeController()));
 exchangeRoutes.post('/', routeAdapter(makeReceiveExchangeFromServiceController()));
 
-export { exchangeRoutes }
+export { exchangeRoutes };

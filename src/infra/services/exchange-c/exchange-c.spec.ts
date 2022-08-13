@@ -1,11 +1,10 @@
-import axios from "axios";
-import { ExchangeC } from "./exchange-c";
-
+import axios from 'axios';
+import { ExchangeC } from './exchange-c';
 
 describe('Exchange C - service', () => {
   let exchangeService: ExchangeC;
   const callbackUrl = 'http://127.0.0.1:3000';
-  
+
   const webhook = jest.fn((cid: string) => Promise.resolve({
     cid,
     f: 100,
@@ -31,14 +30,14 @@ describe('Exchange C - service', () => {
     await exchangeService.getValue(currency);
 
     expect(axios.post).toBeCalledTimes(1);
-    
+
     expect(axios.post).toBeCalledWith(expect.any(String), {
       tipo: currency,
-      callback: callbackUrl
+      callback: callbackUrl,
     });
   });
 
-  it('should receive exchange response from a webhook', async () => {   
+  it('should receive exchange response from a webhook', async () => {
     await exchangeService.getValue('EUR');
 
     expect(webhook).toBeCalledTimes(1);
@@ -46,18 +45,16 @@ describe('Exchange C - service', () => {
   });
 
   it('should throw an error if webhook takes more than 5 seconds', async () => {
-    webhook.mockImplementationOnce((cid: string) => 
-      new Promise((resolve, reject) => {
-        setTimeout(() => {
-          resolve({
-            cid,
-            f: 100,
-            t: 'currency',
-            v: 5820,
-          });
-        }, 5100);
-      })
-    );
+    webhook.mockImplementationOnce((cid: string) => new Promise((resolve) => {
+      setTimeout(() => {
+        resolve({
+          cid,
+          f: 100,
+          t: 'currency',
+          v: 5820,
+        });
+      }, 5100);
+    }));
 
     await expect(exchangeService.getValue('USD'))
       .rejects

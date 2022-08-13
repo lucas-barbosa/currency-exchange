@@ -1,13 +1,13 @@
-import { EmitEvent } from "../../interfaces/emit-event";
-import { ExchangeEventData } from "../../interfaces/exchange-webhook";
-import { ReceiveExchangeFromService } from "./receive-exchange-from-service";
+import { EmitEvent } from '../../interfaces/emit-event';
+import { ExchangeEventData } from '../../interfaces/exchange-webhook';
+import { ReceiveExchangeFromService } from './receive-exchange-from-service';
 
 describe('Receive Exchange from Service - usecase', () => {
   const eventData: ExchangeEventData = {
     cid: 'a1b2c3d4e5',
     f: 1000,
     t: '2022-08-08',
-    v: 5890
+    v: 5890,
   };
 
   let eventEmitter: EmitEvent;

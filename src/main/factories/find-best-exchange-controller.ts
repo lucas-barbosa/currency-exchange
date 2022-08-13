@@ -11,6 +11,6 @@ export const makeFindBestExchangeController = () => {
   return new FindBestExchangeController([
     exchangeA,
     exchangeB,
-    exchangeC
+    exchangeC,
   ]);
 };

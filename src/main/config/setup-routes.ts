@@ -5,4 +5,4 @@ export default (app: Express) => {
   const router = Router();
   setRoutes(router);
   app.use(router);
-}
+};

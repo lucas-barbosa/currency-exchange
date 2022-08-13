@@ -1,5 +1,5 @@
-import axios from "axios";
-import { ExchangeA } from "./exchange-a";
+import axios from 'axios';
+import { ExchangeA } from './exchange-a';
 
 let exchangeService: ExchangeA;
 
@@ -30,8 +30,8 @@ describe('Exchange A - service', () => {
     expect(axios.get).toBeCalledTimes(1);
     expect(axios.get).toBeCalledWith(expect.any(String), {
       params: {
-        moeda: 'USD'
-      }
+        moeda: 'USD',
+      },
     });
   });
 

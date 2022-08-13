@@ -1,5 +1,5 @@
 import { ListenEvent } from '../../../core/interfaces/listen-event';
-import { ExchangeEventData, ExchangeWebhook } from "../../../core/interfaces/exchange-webhook";
+import { ExchangeEventData, ExchangeWebhook } from '../../../core/interfaces/exchange-webhook';
 import { ExchangeCWebhook } from './exchange-c-webhook';
 
 describe('Exchange Webhook', () => {
@@ -7,7 +7,7 @@ describe('Exchange Webhook', () => {
     cid: identifier,
     f: 1000,
     t: 'NOW',
-    v: 5890
+    v: 5890,
   }]));
 
   let webhook: ExchangeWebhook;

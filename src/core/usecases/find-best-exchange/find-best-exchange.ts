@@ -4,7 +4,7 @@ type BestExchange = {
   price: number;
   currency: string;
   comparative: string;
-}
+};
 
 export class FindBestExchange {
   private services: ExchangeService[];
@@ -18,11 +18,13 @@ export class FindBestExchange {
   }
 
   async execute(currency: string): Promise<BestExchange> {
-    const result = await Promise.allSettled(this.services.map(service => service.getValue(currency)));
+    const result = await Promise.allSettled(
+      this.services.map((service) => service.getValue(currency)),
+    );
 
     const availableValues = result
-      .filter(service => service.status === 'fulfilled')
-      .map((service => (service as PromiseFulfilledResult<number>).value));
+      .filter((service) => service.status === 'fulfilled')
+      .map(((service) => (service as PromiseFulfilledResult<number>).value));
 
     if (!availableValues.length) {
       throw new Error('Currency price not found at this moment!');

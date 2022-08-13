@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { ExchangeService } from "../../../core/interfaces/exchange-service";
+import { ExchangeService } from '../../../core/interfaces/exchange-service';
 
 type ExchangeResponseData = {
   cotacao: number;
@@ -12,15 +12,15 @@ export class ExchangeA implements ExchangeService {
     if (!currency) {
       throw new Error('Currency can not be empty!');
     }
-    
+
     const url = process.env.EXCHANGE_A_URL;
 
     const { data } = await axios.get<ExchangeResponseData>(url, {
       params: {
-        moeda: currency
-      }
+        moeda: currency,
+      },
     });
-    
+
     return data.cotacao;
-  };  
+  }
 }

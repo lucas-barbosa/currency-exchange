@@ -1,6 +1,9 @@
-import { ReceiveExchangeFromServiceController } from "../../presentation/controller/receive-exchange-from-service-controller";
-import { makeEmitEvent } from "./events";
+import { ReceiveExchangeFromServiceController } from '../../presentation/controller/receive-exchange-from-service-controller';
+import { makeEmitEvent } from './events';
 
-export const makeReceiveExchangeFromServiceController = (): ReceiveExchangeFromServiceController => {
-  return new ReceiveExchangeFromServiceController(makeEmitEvent());
-}
+const makeReceiveExchangeFromServiceController = (): ReceiveExchangeFromServiceController => {
+  const controller = new ReceiveExchangeFromServiceController(makeEmitEvent());
+  return controller;
+};
+
+export { makeReceiveExchangeFromServiceController };
