@@ -3,12 +3,12 @@ module.exports = {
   clearMocks: true,
   collectCoverage: true,
   collectCoverageFrom: ['src/**/*.{js,ts}'],
-  coverageDirectory: "coverage",
-  coverageProvider: "v8",
+  coverageDirectory: 'coverage',
+  coverageProvider: 'v8',
   preset: 'ts-jest',
   roots: [
-    "<rootDir>/src"
+    '<rootDir>/src',
   ],
-  setupFiles: ["dotenv/config"],
+  setupFiles: ['dotenv/config'],
   testEnvironment: 'node',
 };
