@@ -5,4 +5,4 @@ export type ExchangeEventData = {
   v: number;
 };
 
-export type ExchangeWebhook = (cid: string) => Promise<ExchangeEventData[]>;
+export type ExchangeWebhook = (cid: string) => Promise<ExchangeEventData>;

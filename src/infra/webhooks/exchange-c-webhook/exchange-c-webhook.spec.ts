@@ -1,14 +1,14 @@
 import { ListenEvent } from '../../../core/interfaces/listen-event';
-import { ExchangeWebhook } from "../../../core/interfaces/exchange-webhook";
+import { ExchangeEventData, ExchangeWebhook } from "../../../core/interfaces/exchange-webhook";
 import { ExchangeCWebhook } from './exchange-c-webhook';
 
 describe('Exchange Webhook', () => {
-  const eventListener: ListenEvent = jest.fn((identifier) => Promise.resolve({
+  const eventListener: ListenEvent<ExchangeEventData[]> = jest.fn((identifier) => Promise.resolve([{
     cid: identifier,
     f: 1000,
     t: 'NOW',
     v: 5890
-  }));
+  }]));
 
   let webhook: ExchangeWebhook;
 

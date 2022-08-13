@@ -1,1 +1,1 @@
-export type ListenEvent = (identifier: string) => Promise<any>;
+export type ListenEvent<T> = (identifier: string) => Promise<T>;
