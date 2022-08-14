@@ -5,7 +5,7 @@ import { makeReceiveExchangeFromServiceController } from '../factories/receive-e
 
 const exchangeRoutes = Router();
 
-exchangeRoutes.get('/', routeAdapter(makeFindBestExchangeController()));
+exchangeRoutes.get('/:currency', routeAdapter(makeFindBestExchangeController()));
 exchangeRoutes.post('/', routeAdapter(makeReceiveExchangeFromServiceController()));
 
 export { exchangeRoutes };
