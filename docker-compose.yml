@@ -1,0 +1,21 @@
+version: '3'
+
+services:
+  cotacao-app:
+    container_name: cotacao-app
+    image: zanfranceschi/desafio-01-cotacoes
+    ports:
+      - 8080:80
+  node-app:
+    container_name: node-app
+    build: .
+    ports:
+      - 5000:5000
+    depends_on:
+      - cotacao-app
+    environment:
+      - EXCHANGE_A_URL=http://cotacao-app:80/servico-a/cotacao
+      - EXCHANGE_B_URL=http://cotacao-app:80/servico-b/cotacao
+      - EXCHANGE_C_URL=http://cotacao-app:80/servico-c/cotacao
+      - SERVER_URL=http://node-app
+      - PORT=5000
